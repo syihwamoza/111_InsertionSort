@@ -1,17 +1,68 @@
 #include <iostream>
 using namespace std;
 
-void insertionsort() {
-    int i, n, temp, j;
-    int arr[11];
+int arr[11];
+int n;
 
+void input() {
+	while (true) {
+		cout << "Masukan banyaknya elemen pada array: ";
+		cin >> n;
+		if (n <= 20)
+			break;
+		else {
+			cout << "\nArray dapat mempunyai maksimal 20 eleen.\n";
+		}
+	}
+	cout << endl;
+	cout << "===================" << endl;
+	cout << "Masukan Elemen Array" << endl;
+	cout << "===================" << endl;
+
+	for (int i = 0; 1 < n; i++) {
+		cout << "Data ke-" << (i + 1) << ": ";
+		cin >> arr[i];
+	}
+}
+
+
+void insertionsort() {
+    int i, temp, j;
+    
+    for (i = 1; i <= n - 1; i++)
+    {
+		temp = arr[i];
+        j = i - 1; 
+        while (j >= 0 && arr[j] > temp)
+        {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = temp;
+
+    }
+
+}
+
+void display() {
+	cout << endl;
+	cout << "=================================" << endl;
+	cout << "Element Array yang telah tersusun" << endl;
+	cout << "=================================" << endl;
+	for (int j = 0; j < n; j++) {
+		cout << arr[j] << endl;
+
+	}
+	cout << "Jumlah pass = " << n - 1 << endl;
+	cout << endl;
 }
 
 int main ()
 {
-    std::cout << "Hello World!\n";
+	input();
+	insertionsort();
+	display();
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+
 
